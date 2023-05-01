@@ -1,9 +1,15 @@
 # Reset-Arch-Linux
 
-# First we need to start saving our important packages
+# Setting all packages as dependencies
 
 ```console
-sudo pacman -D --asexplicit linux linux-firmware base base-devel networkmanager
+sudo pacman -D --asdeps $(pacman -Qqe)
+```
+
+# We need to start saving our important packages
+
+```console
+sudo pacman -D --asexplicit linux linux-firmware base base-devel networkmanager grub efibootmgr
 ```
 
 # Now we need to login as sudo
@@ -19,7 +25,7 @@ sudo pacman -Qttdq | pacman -Rns -
 # Now reinstall your packages
 
 ```console
-sudo pacman -S linux linux-firmware base base-devel networkmanager
+sudo pacman -S linux linux-firmware base base-devel networkmanager grub efibootmgr
 ```
 
 # Reboot
